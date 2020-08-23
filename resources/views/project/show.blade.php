@@ -7,5 +7,12 @@
 
     <a href=" {{route('project.edit', $project)}} ">Editar</a>
 
+    <form action=" {{route('project.destroy', $project)}} " method="post">
+        @csrf
+        @method('DELETE')
+
+        <button>Eliminar</button>
+    </form>
+
     <p> {{$project->description}} </p>
 @endsection
