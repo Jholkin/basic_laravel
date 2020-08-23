@@ -1,10 +1,10 @@
 @extends('layout')
 
-@section('title', 'Crear Proyecto')
+@section('title', 'Editar Proyecto')
     
 @section('content')
 
-    <h1>@lang('Crear nuevo proyecto')</h1>
+    <h1>@lang('Editar nuevo proyecto')</h1>
 
     @if ($errors->any())
         <ul>
@@ -14,26 +14,27 @@
         </ul>
     @endif
 
-    <form action=" {{route('project.store')}} " method="post">
+    <form action=" {{route('project.update', $project)}} " method="post">
         @csrf
+        @method('PATCH')
 
         <label for="title">
             Titulo del proyecto <br>
-            <input type="text" name="title" id="title" value=" {{old('title')}} ">
+            <input type="text" name="title" id="title" value=" {{ old('title', $project->title) }} ">
         </label>
 
         <br>
         
         <label for="url">
             URL del proyecto <br>
-            <input type="text" name="url" id="url" value=" {{old('url')}} ">
+            <input type="text" name="url" id="url" value=" {{ old('url', $project->url) }} ">
         </label>
 
         <br>
 
         <label for="description">
             Descripcion del proyecto <br>
-            <textarea name="description" id="description">{{old('description')}}</textarea>
+            <textarea name="description" id="description">{{ old('description', $project->description) }}</textarea>
         </label>
 
         <br>
