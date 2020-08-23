@@ -3,7 +3,9 @@
 @section('title', 'Contact')
 
 @section('content')
-    <h1>Contact</h1>
+    <h1>@lang('Contact')</h1>
+
+    @include('partials.session-status')
 
     <form action=" {{route('message.store')}} " method="post">
         @csrf

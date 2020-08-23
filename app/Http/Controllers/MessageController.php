@@ -26,6 +26,6 @@ class MessageController extends Controller
         // Enviar el email
         Mail::to('palaciosmarianojhil@gmail.com')->send(new MessageReceived);
 
-        return 'Mensaje enviado';
+        return back()->with('status', 'Recibimos tu mensaje, te responderemos en menos de 24 horas.');
     }
 }

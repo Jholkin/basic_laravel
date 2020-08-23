@@ -5,14 +5,16 @@
 @section('content')
     <h1>{{$project->title}}</h1>
 
-    <a href=" {{route('project.edit', $project)}} ">Editar</a>
+    @auth
+        <a href=" {{route('project.edit', $project)}} ">Editar</a>
 
-    <form action=" {{route('project.destroy', $project)}} " method="post">
-        @csrf
-        @method('DELETE')
+        <form action=" {{route('project.destroy', $project)}} " method="post">
+            @csrf
+            @method('DELETE')
 
-        <button>Eliminar</button>
-    </form>
+            <button>Eliminar</button>
+        </form>
+    @endauth
 
     <p> {{$project->description}} </p>
 @endsection

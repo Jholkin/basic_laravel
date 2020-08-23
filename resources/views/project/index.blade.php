@@ -5,7 +5,9 @@
 @section('content')
     <h1>@lang('Projects')</h1>
 
-    <a href=" {{route('project.create')}} ">@lang('Crear nuevo proyecto')</a>
+    @auth
+        <a href=" {{route('project.create')}} ">@lang('Crear nuevo proyecto')</a>
+    @endauth
 
     <ul>
         @isset($projects)

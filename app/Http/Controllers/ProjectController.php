@@ -8,6 +8,11 @@ use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +57,7 @@ class ProjectController extends Controller
             'description' => $description
         ]);*/
 
-        return redirect()->route('project.index');
+        return redirect()->route('project.index')->with('status', 'El proyecto fue creado con éxito.');
     }
 
     /**
@@ -92,7 +97,7 @@ class ProjectController extends Controller
     {
         $project->update($request->validated());
 
-        return redirect()->route('project.show', $project);
+        return redirect()->route('project.show', $project)->with('status', 'El proyecto se actualizó con éxito.');
     }
 
     /**
@@ -105,6 +110,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('project.index');
+        return redirect()->route('project.index')->with('status', 'El proyecto fue eliminado con éxito.');
     }
 }

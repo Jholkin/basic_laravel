@@ -29,3 +29,4 @@ Route::get('/project/{project}', 'ProjectController@show')->name('project.show')
 Route::delete('/project/{project}', 'ProjectController@destroy')->name('project.destroy');*/
 
 //Route::resource('portfolio', 'PortfolioController')->except('create','edit');
+Auth::routes(['register' => false]);
