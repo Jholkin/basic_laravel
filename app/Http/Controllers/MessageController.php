@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MessageReceived;
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     public function store() //Request $request
     {

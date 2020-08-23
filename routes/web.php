@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home')->name('home');
-Route::view('about', 'about')->name('about');
-Route::view('contact', 'contact')->name('contact');
-Route::post('contact', 'MessagesController@store');
+Route::view('/quienes-somos', 'about')->name('about');
+Route::view('/contacto', 'contact')->name('contact');
+Route::post('contact', 'MessageController@store')->name('message.store');
 
-Route::get('portfolio', 'PortfolioController@index')->name('portfolio');
-//Route::resource('protfolio', 'PortfolioController')->except('create','edit');
+Route::get('/project', 'ProjectController@index')->name('project.index');
+Route::get('/project/{project}', 'ProjectController@show')->name('project.show');
+//Route::resource('portfolio', 'PortfolioController')->except('create','edit');
