@@ -20,7 +20,8 @@ mix.browserSync('http://localhost:8000/');
 // lo descarga del servidor cada vez que haya un cambio
 // y no cargar esos archivos (css, js) de la cache
 // OJO: solo se debe usar para producción
-if(mix.inProduction())
+
+/*if(mix.inProduction())
 {
     mix.version();
-}
+}*/

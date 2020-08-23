@@ -3,25 +3,91 @@
 @section('title', 'Contact')
 
 @section('content')
-    <h1>@lang('Contact')</h1>
 
-    @include('partials.session-status')
+    <div class="container">
 
-    <form action=" {{route('message.store')}} " method="post">
-        @csrf
-        <input type="text" name="name" placeholder="nombre" value=" {{old('name')}} "><br>
-        {!! $errors->first('name', '<small>:message</small><br>') !!}
+        <div class=" mx-auto">
+            
 
-        <input type="email" name="email" placeholder="Email..." value=" {{old('email')}} "><br>
-        {!! $errors->first('email', '<small>:message</small><br>') !!}
+            @include('partials.session-status')
 
-        <input type="text" name="subject" placeholder="asunto" value=" {{old('subject')}} "><br>
-        {!! $errors->first('subject', '<small>:message</small><br>') !!}
+            <form class="bg-white shadow rounded py-3 px-4" action=" {{route('message.store')}} " method="post">
+                @csrf
+                <h1 class="display-5 mx-auto">@lang('Contact')</h1>
+                <hr>
 
-        <textarea type="" name="message"> {{old('message')}} </textarea><br>
-        {!! $errors->first('message', '<small>:message</small><br>') !!}
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input class="form-control bg-light shadow-sm 
+                    @error('name')
+                        is-invalid
+                    @else 
+                        border-0
+                    @enderror" 
+                    type="text" name="name" id="name" placeholder="Escriba aquí tu nombre..." value=" {{old('name')}} ">
+                    
+                    @error('name')
+                        <span class="invalid-feedback">
+                            <strong> {{$message}} </strong>
+                        </span>
+                    @enderror
+                </div>
 
-        <button type="submit">Enviar</button>
-    </form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control bg-light shadow-sm
+                    @error('email')
+                        is-invalid
+                    @else 
+                        border-0
+                    @enderror"
+                    type="email" name="email" id="email" placeholder="Escriba aquí tu email..." value=" {{old('email')}} "><br>
+                    
+                    @error('email')
+                        <span class="invalid-feedback">
+                            <strong> {{$message}} </strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <input class="form-control bg-light shadow-sm
+                    @error('subject')
+                        is-invalid
+                    @else 
+                        border-0
+                    @enderror"
+                    type="text" name="subject" id="subject" placeholder="Escriba aquí el asunto de tu mensaje..." value=" {{old('subject')}} ">
+                    
+                    @error('subject')
+                        <span class="invalid-feedback">
+                            <strong> {{$message}} </strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea class="form-control bg-light shadow-sm
+                    @error('message')
+                        is-invalid
+                    @else 
+                        border-0
+                    @enderror"
+                    type="" name="message" id="message" placeholder="Escriba aquí el contenido de tu mensaje..."> {{old('message')}} </textarea>
+                    
+                    @error('message')
+                        <span class="invalid-feedback">
+                            <strong> {{$message}} </strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">@lang('Send')</button>
+            </form>
+        </div>
+
+    </div>
 
 @endsection

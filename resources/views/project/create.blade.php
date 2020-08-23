@@ -4,14 +4,21 @@
     
 @section('content')
 
-    <h1>@lang('Crear nuevo proyecto')</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 col-g-6 mx-auto">
+                
+                @include('partials.validation-errors')
 
-    @include('partials.validation-errors')
+                <form class="bg-white shadow rounded py-3 px-4" action=" {{route('project.store')}} " method="post">
+                    <h1 class="display-4">@lang('Nuevo proyecto')</h1>
+                    <hr>
 
-    <form action=" {{route('project.store')}} " method="post">
+                    @include('project._form', ['btnText' => 'Guardar'])
 
-        @include('project._form', ['btnText' => 'Guardar'])
-
-    </form>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
