@@ -19,5 +19,8 @@ Route::view('/contacto', 'contact')->name('contact');
 Route::post('contact', 'MessageController@store')->name('message.store');
 
 Route::get('/project', 'ProjectController@index')->name('project.index');
+Route::get('/project/crear', 'ProjectController@create')->name('project.create');
+Route::post('/project', 'ProjectController@store')->name('project.store');
 Route::get('/project/{project}', 'ProjectController@show')->name('project.show');
+
 //Route::resource('portfolio', 'PortfolioController')->except('create','edit');

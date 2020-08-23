@@ -3,7 +3,9 @@
 @section('title', 'Portfolio')
 
 @section('content')
-    <h1>Portfolio</h1>
+    <h1>@lang('Projects')</h1>
+
+    <a href=" {{route('project.create')}} ">@lang('Crear nuevo proyecto')</a>
 
     <ul>
         @isset($projects)
